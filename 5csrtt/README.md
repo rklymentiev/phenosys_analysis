@@ -3,7 +3,7 @@
 
 # 5-CSRTT Data Preprocessor
 
-Script for preprocessing the raw 5-CSRTT data from the system into for "analysis-friendly" format.
+Script for preprocessing the raw 5-CSRTT data from the system into the "analysis-friendly" format.
 
 ## Usage:
 
@@ -11,7 +11,7 @@ Terminal commands:
 
 ```bash
 $ cd "path-to-the-script"
-$ python data_preprocessor.py
+$ python fcsrtt_preprocessor.py
 ```
 
 1. The first pop-up window will ask for the selection of the input file (the original csv file that comes from the system without any changes).
