@@ -1,0 +1,5 @@
+{
+	"accuracy_threshold": 80,
+	"min_trial_number": 0,
+	"max_trial_number": 50
+}
