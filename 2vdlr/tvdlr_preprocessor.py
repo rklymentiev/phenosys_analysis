@@ -230,8 +230,16 @@ if __name__ == "__main__":
 
     output_file = f"{output_path}/{output_name}.csv"
 
-    with open("params.json", "r") as f:
-        params = json.load(f)
+    try:
+        with open("2vdlr/params.json", "r") as f:
+            params = json.load(f)
+    except:
+        with open("params.json", "r") as f:
+            params = json.load(f)
+    else:
+        print("No parameters file found. Using default values.")
+        params = {'animals_to_ignore': []}
+
 
     final_output = tvdlr_data_cleaner(input_file_paths=input_files, params=params)
 
