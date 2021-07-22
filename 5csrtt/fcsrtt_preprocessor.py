@@ -164,19 +164,20 @@ def fcsrtt_data_cleaner(input_file_path, input_encoding="utf_16", input_sep=";",
                     },
                     ignore_index=True)
 
-            animal_out['trial'] = np.arange(1, len(animal_out)+1) # trial indeces
-            animal_out['IdLabel'] = animal_id
-            animal_out['IdRFID'] = animal_out['IdLabel'].apply(lambda x: ids_dict[x])
-            animal_out = animal_out[['IdRFID', 'IdLabel', 'session', 'trial', 'trialStart', 'stimulus',
-                                 'stimulusDuration', 'outcome', 'responseLatency', 'rewardLatency',
-                                 'nPremature', 'trialDuration']]
+            if not animal_out.emtpy:
+                animal_out['trial'] = np.arange(1, len(animal_out)+1) # trial indeces
+                animal_out['IdLabel'] = animal_id
+                animal_out['IdRFID'] = animal_out['IdLabel'].apply(lambda x: ids_dict[x])
+                animal_out = animal_out[['IdRFID', 'IdLabel', 'session', 'trial', 'trialStart', 'stimulus',
+                                     'stimulusDuration', 'outcome', 'responseLatency', 'rewardLatency',
+                                     'nPremature', 'trialDuration']]
 
-            # rounding up some values to 3 digits after comma
-            animal_out['responseLatency'] = animal_out['responseLatency'].apply(lambda x: np.round(x, 3))
-            animal_out['rewardLatency'] = animal_out['rewardLatency'].apply(lambda x: np.round(x, 3))
-            animal_out['trialDuration'] = animal_out['trialDuration'].apply(lambda x: np.round(x, 3))
+                # rounding up some values to 3 digits after comma
+                animal_out['responseLatency'] = animal_out['responseLatency'].apply(lambda x: np.round(x, 3))
+                animal_out['rewardLatency'] = animal_out['rewardLatency'].apply(lambda x: np.round(x, 3))
+                animal_out['trialDuration'] = animal_out['trialDuration'].apply(lambda x: np.round(x, 3))
 
-            final_output = final_output.append(animal_out)
+                final_output = final_output.append(animal_out)
 
             iti_df = None
 
